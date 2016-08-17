@@ -1,6 +1,7 @@
 package com.gome.project.controler;
 
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @Controller("/")
 public class LoginControler {
-    private Logger logger = Logger.getLogger(LoginControler.class);
+    private final static Logger logger = LoggerFactory.getLogger(LoginControler.class);
 
     @RequestMapping("index")
     public ModelAndView index(ModelAndView modelAndView){
@@ -26,7 +27,8 @@ public class LoginControler {
     public ModelAndView login(HttpServletRequest request, HttpServletResponse response, ModelAndView model,
                       @RequestParam("username")String username,
                       @RequestParam("password")String password){
-        logger.debug("登录："+username+" 密码："+password);
+        logger.info("登录："+username+" 密码："+password);
+        //System.out.println("登录："+username+" 密码："+password);
         model.setViewName("/success");
         return model;
     }
