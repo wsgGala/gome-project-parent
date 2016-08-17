@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/gome-project-common/gome-project-common.iml" filepath="$PROJECT_DIR$/gome-project-common/gome-project-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gome-project-do/gome-project-do.iml" filepath="$PROJECT_DIR$/gome-project-do/gome-project-do.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gome-project-entity/gome-project-entity.iml" filepath="$PROJECT_DIR$/gome-project-entity/gome-project-entity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gome-project-parent.iml" filepath="$PROJECT_DIR$/gome-project-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gome-project-service/gome-project-service.iml" filepath="$PROJECT_DIR$/gome-project-service/gome-project-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/gome-project-web/gome-project-web.iml" filepath="$PROJECT_DIR$/gome-project-web/gome-project-web.iml" />
+    </modules>
+  </component>
+</project>
