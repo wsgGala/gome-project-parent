@@ -29,13 +29,13 @@ public class UserLoginInterceptor extends HandlerInterceptorAdapter {
         //从cookie中获取当前登录用户的信息
         try {
             //String cookieToken = cookieUtil.getCookieValues(request, "token");
-            String userName = (String) request.getSession().getAttribute("userName");
+           /* String userName = (String) request.getSession().getAttribute("userName");
 
             if(StringUtils.isBlank(userName)){
 
                 response.sendRedirect(request.getContextPath()+"/toLogin");
                 return false;
-            }
+            }*/
 
         } catch (Exception e) {
             e.printStackTrace();
