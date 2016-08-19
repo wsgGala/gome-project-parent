@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gome.project.dao.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.gome.project.entity.User" >
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="phone" jdbcType="BIGINT" property="phone" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="nicheng" jdbcType="VARCHAR" property="nicheng" />
+    <result column="sex" jdbcType="TINYINT" property="sex" />
+    <result column="money" jdbcType="BIGINT" property="money" />
+    <result column="updtime" jdbcType="TIMESTAMP" property="updtime" />
+    <result column="createtime" jdbcType="DATE" property="createtime" />
+    <result column="syzt" jdbcType="VARCHAR" property="syzt" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="salt" jdbcType="VARCHAR" property="salt"/>
+  </resultMap>
+
+
+  <sql id="Base_Column_List" >
+    id, phone, password, nicheng, sex, money, updtime, createtime, syzt, username, address,salt,
+    email
+  </sql>
+
+  <sql id="sql_list">
+    <if test="phone != null">
+      and phone = #{phone,jdbcType=BIGINT}
+    </if>
+    <if test="password != null">
+      and password = #{password,jdbcType=VARCHAR}
+    </if>
+    <if test="nicheng != null">
+      and nicheng = #{nicheng,jdbcType=VARCHAR}
+    </if>
+    <if test="sex != null">
+      and sex = #{sex,jdbcType=TINYINT}
+    </if>
+    <if test="money != null">
+      and money = #{money,jdbcType=BIGINT}
+    </if>
+    <if test="updtime != null and updtime != ''">
+      and updtime = #{updtime,jdbcType=TIMESTAMP}
+    </if>
+    <if test="createtime != null and createtime != ''">
+      and createtime = #{createtime,jdbcType=DATE}
+    </if>
+    <if test="syzt != null">
+      and syzt = #{syzt,jdbcType=VARCHAR}
+    </if>
+    <if test="username != null">
+      and username = #{username,jdbcType=VARCHAR}
+    </if>
+    <if test="address != null">
+      and address = #{address,jdbcType=VARCHAR}
+    </if>
+    <if test="email != null">
+      and email = #{email,jdbcType=VARCHAR}
+    </if>
+    <if test="salt != null">
+      and salt = #{salt,jdbcType=VARCHAR}
+    </if>
+  </sql>
+
+  <select id="selectUserList" resultType="User">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where 1=1 and syzt = 'Y'
+    <include refid="sql_list"/>
+  </select>
+
+  <select id="selectUserWithConditions" resultType="User" parameterType="User" >
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where 1=1 and syzt = 'Y'
+    <include refid="sql_list"/>
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="User" >
+    UPDATE user
+    set syzt = 'N'
+    where username = #{username,jdbcType=VARCHAR}
+  </delete>
+
+  <insert id="insertSelective" parameterType="User" >
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="nicheng != null" >
+        nicheng,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="money != null" >
+        money,
+      </if>
+      <if test="updtime != null and updtime != ''" >
+        updtime,
+      </if>
+      <if test="createtime != null and createtime != ''" >
+        createtime,
+      </if>
+      <if test="salt != null">
+        salt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="phone != null" >
+        #{phone,jdbcType=BIGINT},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nicheng != null" >
+        #{nicheng,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="money != null" >
+        #{money,jdbcType=BIGINT},
+      </if>
+      <if test="updtime != null" >
+        #{updtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=DATE},
+      </if>
+      <if test="salt != null">
+        #{salt,jdbcType=VARCHAR}
+      </if>
+    </trim>
+  </insert>
+
+
+
+  <update id="updateByUserName" parameterType="User" >
+    update user
+    <set >
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=BIGINT},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nicheng != null" >
+        nicheng = #{nicheng,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=TINYINT},
+      </if>
+      <if test="money != null" >
+        money = #{money,jdbcType=BIGINT},
+      </if>
+      <if test="updtime != null" >
+        updtime = #{updtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR}
+      </if>
+    </set>
+    where username = #{username,jdbcType=VARCHAR}
+    and syzt = 'Y'
+  </update>
+
+</mapper>

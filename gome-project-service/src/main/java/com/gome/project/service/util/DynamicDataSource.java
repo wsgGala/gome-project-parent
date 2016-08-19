@@ -2,6 +2,9 @@ package com.gome.project.service.util;
 
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
+import java.sql.SQLFeatureNotSupportedException;
+import java.util.logging.Logger;
+
 /**
  * Created by qiaowentao on 2016/8/17.
  */
@@ -12,4 +15,8 @@ public class DynamicDataSource extends AbstractRoutingDataSource {
         return DBContextHolder.getDataSource();
     }
 
+    @Override
+    public Logger getParentLogger() throws SQLFeatureNotSupportedException {
+        return null;
+    }
 }

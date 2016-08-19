@@ -59,4 +59,5 @@
 	<context:annotation-config />
     
 	<import resource="classpath:spring/spring-config-datasource-dbcp.xml" />
+	<import resource="classpath:spring/servlet-context-interceptor.xml" />
 </beans>

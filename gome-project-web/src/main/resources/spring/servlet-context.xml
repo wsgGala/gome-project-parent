@@ -126,4 +126,5 @@
 	</bean>
 
 	<mvc:annotation-driven validator="validator" />
+	<import resource="classpath:spring/servlet-context-interceptor.xml" />
 </beans>
