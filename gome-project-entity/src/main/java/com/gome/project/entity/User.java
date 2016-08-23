@@ -32,6 +32,7 @@ public class User {
 
     private String salt;
 
+    private String yaoqingma;
 
     public User(){
         //新建用户默认可以使用
@@ -141,5 +142,13 @@ public class User {
 
     public String getSalt() {
         return salt;
+    }
+
+    public void setYaoqingma(String yaoqingma) {
+        this.yaoqingma = yaoqingma;
+    }
+
+    public String getYaoqingma() {
+        return yaoqingma;
     }
 }

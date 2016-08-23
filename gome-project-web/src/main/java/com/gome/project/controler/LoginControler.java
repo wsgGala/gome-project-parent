@@ -73,6 +73,13 @@ public class LoginControler {
         return model;
     }
 
+    /**
+     * 去往登录页面
+     * @param request
+     * @param response
+     * @param model
+     * @return
+     */
     @RequestMapping("toLogin")
     public ModelAndView toLogin(HttpServletRequest request, HttpServletResponse response, ModelAndView model){
         model.setViewName("/login");

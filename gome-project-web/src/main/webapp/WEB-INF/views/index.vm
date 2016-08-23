@@ -4,7 +4,8 @@
 </head>
 <body>
 
-
-
+<hi>这是首页</hi>
+<a href="/toLogin">去登录</a>
+<a href="/toRegister">去注册</a>
 </body>
 </html>

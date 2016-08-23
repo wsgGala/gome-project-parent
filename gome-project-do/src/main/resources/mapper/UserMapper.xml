@@ -15,12 +15,13 @@
     <result column="address" jdbcType="VARCHAR" property="address" />
     <result column="email" jdbcType="VARCHAR" property="email" />
     <result column="salt" jdbcType="VARCHAR" property="salt"/>
+    <result column="yaoqingma" jdbcType="VARCHAR" property="yaoqingma"/>
   </resultMap>
 
 
   <sql id="Base_Column_List" >
     id, phone, password, nicheng, sex, money, updtime, createtime, syzt, username, address,salt,
-    email
+    email,yaoqingma
   </sql>
 
   <sql id="sql_list">
@@ -59,6 +60,9 @@
     </if>
     <if test="salt != null">
       and salt = #{salt,jdbcType=VARCHAR}
+    </if>
+    <if test="yaoqingma != null">
+      and yaoqingma = #{yaoqingma,jdbcType=VARCHAR}
     </if>
   </sql>
 
@@ -111,6 +115,9 @@
       <if test="salt != null">
         salt,
       </if>
+      <if test="yaoqingma != null">
+        yaoqingma,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="phone != null" >
@@ -136,6 +143,9 @@
       </if>
       <if test="salt != null">
         #{salt,jdbcType=VARCHAR}
+      </if>
+      <if test="yaoqingma != null">
+        #{yaoqingma,jdbcType=VARCHAR}
       </if>
     </trim>
   </insert>
