@@ -41,10 +41,10 @@
       and money = #{money,jdbcType=BIGINT}
     </if>
     <if test="updtime != null and updtime != ''">
-      and updtime = #{updtime,jdbcType=TIMESTAMP}
+      and updtime = #{updtime,jdbcType=VARCHAR}
     </if>
     <if test="createtime != null and createtime != ''">
-      and createtime = #{createtime,jdbcType=TIMESTAMP}
+      and createtime = #{createtime,jdbcType=VARCHAR}
     </if>
     <if test="syzt != null">
       and syzt = #{syzt,jdbcType=VARCHAR}
@@ -90,12 +90,12 @@
 
   <insert id="insertSelective" parameterType="User" >
     insert into user
-    (phone,salt,password,createtime,updtime,email,yaoqingma,syzt)
+    (phone,password,updtime,createtime,salt,email,yaoqingma,syzt)
     values (
         #{phone,jdbcType=VARCHAR},
         #{password,jdbcType=VARCHAR},
-        #{updtime,jdbcType=TIMESTAMP},
-        #{createtime,jdbcType=TIMESTAMP},
+        #{updtime,jdbcType=VARCHAR},
+        #{createtime,jdbcType=VARCHAR},
         #{salt,jdbcType=VARCHAR},
         #{email,jdbcType=VARCHAR},
         #{yaoqingma,jdbcType=VARCHAR},
@@ -122,14 +122,14 @@
       <if test="money != null" >
         money = #{money,jdbcType=BIGINT},
       </if>
-      <if test="updtime != null" >
-        updtime = #{updtime,jdbcType=TIMESTAMP},
+      <if test="updtime != null and updtime != ''" >
+        updtime = #{updtime,jdbcType=VARCHAR},
       </if>
       <if test="email != null">
         email = #{email,jdbcType=VARCHAR}
       </if>
     </set>
-    where username = #{username,jdbcType=VARCHAR}
+    where phone = #{phone,jdbcType=VARCHAR}
     and syzt = 'Y'
   </update>
 
