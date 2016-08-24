@@ -15,9 +15,9 @@ public class User {
 
     private Long money;
 
-    private Date updtime;
+    private String updtime;
 
-    private Date createtime;
+    private String createtime;
 
     /**
      * 使用状态，Y：可用，N：删除状态，不可用
@@ -88,19 +88,19 @@ public class User {
         this.money = money;
     }
 
-    public Date getUpdtime() {
+    public String getUpdtime() {
         return updtime;
     }
 
-    public void setUpdtime(Date updtime) {
+    public void setUpdtime(String updtime) {
         this.updtime = updtime;
     }
 
-    public Date getCreatetime() {
+    public String getCreatetime() {
         return createtime;
     }
 
-    public void setCreatetime(Date createtime) {
+    public void setCreatetime(String createtime) {
         this.createtime = createtime;
     }
 

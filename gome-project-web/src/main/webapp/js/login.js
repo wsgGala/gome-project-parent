@@ -96,6 +96,7 @@ var project = {
 
 				}
 
+				//密码验证
 				var pwdmin = 6;
 				if ($('#password').val().length < pwdmin) {
 					$('#password').focus();
@@ -108,6 +109,7 @@ var project = {
 					return false;
 				}
 
+				//邀请码验证
 				//var sqq = /^[1-9]{1}[0-9]{4,9}$/;
 				var yaoqingma = $('#yaoqingma').val();
 				if (yaoqingma == "") {
@@ -122,6 +124,21 @@ var project = {
 						boxShadow: "none"
 					});
 
+				}
+
+				//验证码
+				var inputCode = $("#inputCode").val();
+				if(inputCode == ""){
+					$('#inputCode').focus().css({
+						border: "1px solid red",
+						boxShadow: "0 0 2px red"
+					});
+					$('#userCue').html("<font color='red'><b>×请填写验证码</b></font>");return false;
+				}else{
+					$('#inputCode').css({
+						border: "1px solid #D7D7D7",
+						boxShadow: "none"
+					});
 				}
 
 				$('#regUser').submit();

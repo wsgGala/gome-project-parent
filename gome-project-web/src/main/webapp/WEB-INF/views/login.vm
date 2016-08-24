@@ -17,7 +17,7 @@
             <div class="bj_bai">
                 <h3>登录</h3>
                 <form action="" method="get">
-                    <input name="phone" type="text" class="kuang_txt" placeholder="手机号" value="phone">
+                    <input name="phone" type="text" class="kuang_txt" placeholder="手机号" value="$!phone">
                     <input name="" type="password" class="kuang_txt" placeholder="密码">
                     <div>
                         <a href="#">忘记密码？</a><input name="" type="checkbox" value="" checked><span>记住我</span>

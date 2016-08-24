@@ -38,8 +38,10 @@ public class UserServiceImpl implements UserService {
             //密码进行加密
             password = MD5.md5Password(salt,password);
             user.setPassword(password);
-            user.setCreatetime(new Date());
-            user.setUpdtime(new Date());
+            Date time = new Date();
+            DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            user.setCreatetime(sdf.format(time));
+            user.setUpdtime(sdf.format(time));
             userMapper.insertSelective(user);
             return 1;
         }else{

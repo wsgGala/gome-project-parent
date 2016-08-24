@@ -8,8 +8,8 @@
     <result column="nicheng" jdbcType="VARCHAR" property="nicheng" />
     <result column="sex" jdbcType="TINYINT" property="sex" />
     <result column="money" jdbcType="BIGINT" property="money" />
-    <result column="updtime" jdbcType="TIMESTAMP" property="updtime" />
-    <result column="createtime" jdbcType="DATE" property="createtime" />
+    <result column="updtime" jdbcType="VARCHAR" property="updtime" />
+    <result column="createtime" jdbcType="VARCHAR" property="createtime" />
     <result column="syzt" jdbcType="VARCHAR" property="syzt" />
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="address" jdbcType="VARCHAR" property="address" />
@@ -44,7 +44,7 @@
       and updtime = #{updtime,jdbcType=TIMESTAMP}
     </if>
     <if test="createtime != null and createtime != ''">
-      and createtime = #{createtime,jdbcType=DATE}
+      and createtime = #{createtime,jdbcType=TIMESTAMP}
     </if>
     <if test="syzt != null">
       and syzt = #{syzt,jdbcType=VARCHAR}
@@ -95,7 +95,7 @@
         #{phone,jdbcType=VARCHAR},
         #{password,jdbcType=VARCHAR},
         #{updtime,jdbcType=TIMESTAMP},
-        #{createtime,jdbcType=DATE},
+        #{createtime,jdbcType=TIMESTAMP},
         #{salt,jdbcType=VARCHAR},
         #{email,jdbcType=VARCHAR},
         #{yaoqingma,jdbcType=VARCHAR},
