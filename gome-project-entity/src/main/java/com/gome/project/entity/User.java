@@ -5,7 +5,7 @@ import java.util.Date;
 public class User {
     private Long id;
 
-    private Long phone;
+    private String phone;
 
     private String password;
 
@@ -36,7 +36,7 @@ public class User {
 
     public User(){
         //新建用户默认可以使用
-        this.syzt = "Y";
+        //this.syzt = "Y";
 
     }
 
@@ -48,11 +48,11 @@ public class User {
         this.id = id;
     }
 
-    public Long getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Long phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

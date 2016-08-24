@@ -3,7 +3,7 @@
 <mapper namespace="com.gome.project.dao.UserMapper" >
   <resultMap id="BaseResultMap" type="com.gome.project.entity.User" >
     <id column="id" jdbcType="BIGINT" property="id" />
-    <result column="phone" jdbcType="BIGINT" property="phone" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="nicheng" jdbcType="VARCHAR" property="nicheng" />
     <result column="sex" jdbcType="TINYINT" property="sex" />
@@ -26,7 +26,7 @@
 
   <sql id="sql_list">
     <if test="phone != null">
-      and phone = #{phone,jdbcType=BIGINT}
+      and phone = #{phone,jdbcType=VARCHAR}
     </if>
     <if test="password != null">
       and password = #{password,jdbcType=VARCHAR}
@@ -90,64 +90,16 @@
 
   <insert id="insertSelective" parameterType="User" >
     insert into user
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="phone != null" >
-        phone,
-      </if>
-      <if test="password != null" >
-        password,
-      </if>
-      <if test="nicheng != null" >
-        nicheng,
-      </if>
-      <if test="sex != null" >
-        sex,
-      </if>
-      <if test="money != null" >
-        money,
-      </if>
-      <if test="updtime != null and updtime != ''" >
-        updtime,
-      </if>
-      <if test="createtime != null and createtime != ''" >
-        createtime,
-      </if>
-      <if test="salt != null">
-        salt,
-      </if>
-      <if test="yaoqingma != null">
-        yaoqingma,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="phone != null" >
-        #{phone,jdbcType=BIGINT},
-      </if>
-      <if test="password != null" >
+    (phone,salt,password,createtime,updtime,email,yaoqingma,syzt)
+    values (
+        #{phone,jdbcType=VARCHAR},
         #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="nicheng != null" >
-        #{nicheng,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null" >
-        #{sex,jdbcType=TINYINT},
-      </if>
-      <if test="money != null" >
-        #{money,jdbcType=BIGINT},
-      </if>
-      <if test="updtime != null" >
         #{updtime,jdbcType=TIMESTAMP},
-      </if>
-      <if test="createtime != null" >
         #{createtime,jdbcType=DATE},
-      </if>
-      <if test="salt != null">
-        #{salt,jdbcType=VARCHAR}
-      </if>
-      <if test="yaoqingma != null">
-        #{yaoqingma,jdbcType=VARCHAR}
-      </if>
-    </trim>
+        #{salt,jdbcType=VARCHAR},
+        #{email,jdbcType=VARCHAR},
+        #{yaoqingma,jdbcType=VARCHAR},
+        #{syzt,jdbcType=VARCHAR})
   </insert>
 
 
@@ -156,7 +108,7 @@
     update user
     <set >
       <if test="phone != null" >
-        phone = #{phone,jdbcType=BIGINT},
+        phone = #{phone,jdbcType=VARCHAR},
       </if>
       <if test="password != null" >
         password = #{password,jdbcType=VARCHAR},

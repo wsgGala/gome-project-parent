@@ -9,6 +9,9 @@ import com.gome.project.service.util.DBContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -35,7 +38,8 @@ public class UserServiceImpl implements UserService {
             //密码进行加密
             password = MD5.md5Password(salt,password);
             user.setPassword(password);
-            System.out.println(password);
+            user.setCreatetime(new Date());
+            user.setUpdtime(new Date());
             userMapper.insertSelective(user);
             return 1;
         }else{

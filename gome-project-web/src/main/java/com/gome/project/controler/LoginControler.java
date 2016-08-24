@@ -62,10 +62,10 @@ public class LoginControler {
             int i = userService.registerUser(user);
             if(i==1){
                 //注册成功，前往登录页面
+                String phone = user.getPhone();
                 model.setViewName("/login");
+                model.addObject("phone",phone);
                 return model;
-            }else{
-
             }
         }catch(Exception e){
             logger.error("系统出现异常",e);
@@ -91,19 +91,19 @@ public class LoginControler {
      * @param request
      * @param response
      * @param model
-     * @param username
+     * @param phone
      * @param password
      * @return
      */
     @RequestMapping(value="login",method = {RequestMethod.POST,RequestMethod.GET})
     public ModelAndView login(HttpServletRequest request, HttpServletResponse response, ModelAndView model,
-                      @RequestParam("username")String username,
+                      @RequestParam("phone")String phone,
                       @RequestParam("password")String password){
-        logger.info("登录："+username+" 密码："+password);
+        logger.info("登录："+phone+" 密码："+password);
         try{
             User user = new User();
             user.setPassword(password);
-            user.setUsername(username);
+            user.setPhone(phone);
             User loginUser = userService.login(user);
             System.out.println(loginUser);
             if(loginUser != null){

@@ -1,6 +1,9 @@
 package com.gome.project.common;
 
 import java.security.MessageDigest;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by qiaowentao on 2016/8/18.
@@ -70,18 +73,9 @@ public class MD5 {
     }
 
     public static void main(String[] args) {
-        /*String salt = "helloworld";
-        MD5 encoderMd5 = new MD5(salt, "SHA");
-        String encode = encoderMd5.encode("test");
-        System.out.println(encode);
-        boolean passwordValid = encoderMd5.isPasswordValid("1bd98ed329aebc7b2f89424b5a38926e", "test");
-        System.out.println(passwordValid);
-
-        MD5 encoderSha = new MD5(salt, "SHA");
-        String pass2 = encoderSha.encode("test");
-        System.out.println(pass2);
-        boolean passwordValid2 = encoderSha.isPasswordValid("1bd98ed329aebc7b2f89424b5a38926e", "test");
-        System.out.println(passwordValid2);*/
+        Date date = new Date();
+        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(sdf.format(date));
     }
 
 }

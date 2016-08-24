@@ -19,21 +19,22 @@
         <div class="zc">
             <div class="bj_bai">
                 <h3>欢迎注册</h3>
-                <form action="" method="POST" datatype="user" >
-                    <input name="phone" type="text" class="kuang_txt phone" placeholder="手机号">
-                    <input name="email" type="text" class="kuang_txt email" placeholder="邮箱">
-                    <input name="password" type="text" class="kuang_txt possword" placeholder="密码">
-                    <input name="password" type="text" class="kuang_txt possword" placeholder="确认密码">
-                    <input name="yaoqingma" type="text" class="kuang_txt possword" placeholder="邀请码">
-                    <input name="code" type="text" class="kuang_txt yanzm" placeholder="验证码">
+                <form action="/register" id="regUser" method="POST" datatype="user" >
+                    <span id="userCue" style="float:left" class="cue">注册请注意格式</span>
+                    <input name="phone" id="phone" type="text" class="kuang_txt phone" onmouseout="checkPhone()" placeholder="手机号">
+                    <input name="email" id="email" type="text" class="kuang_txt email" onmouseout="checkEmail()" placeholder="邮箱">
+                    <input name="password" id="password" type="password" class="kuang_txt possword" placeholder="密码">
+                    <input name="" id="password2" type="password" class="kuang_txt possword" placeholder="确认密码">
+                    <input name="yaoqingma" id="yaoqingma" type="text" class="kuang_txt possword" placeholder="邀请码">
+                    <input name="code" id="code" type="text" class="kuang_txt yanzm" placeholder="验证码">
                     <div>
-                        <div class="hui_kuang"><img src="/image/zc_22.jpg" width="92" height="31"></div>
-                        <div class="shuaxin"><a href="#"><img src="/image/zc_25.jpg" width="13" height="14"></a></div>
+                        <div class="hui_kuang"><img onclick="/image/zc_22.jpg" width="92" height="31"></div>
+                        #*<div class="shuaxin"><a href="#"><img src="/image/zc_25.jpg" width="13" height="14"></a></div>*#
                     </div>
                     <div>
                         <input name="" type="checkbox" value=""><span>已阅读并同意<a href="#" target="_blank"><span class="lan">《XXXXX使用协议》</span></a></span>
                     </div>
-                    <input name="注册" type="button" class="btn_zhuce" value="注册">
+                    <input name="注册" id="reg" type="button" class="btn_zhuce" disabled="disabled" value="注册">
 
                 </form>
             </div>
