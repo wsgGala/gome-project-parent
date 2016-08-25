@@ -1,0 +1,366 @@
+function checkPhone (){
+
+	var phone = $('#phone').val();
+	if (phone == "") {
+		$('#phone').focus().css({
+			border: "1px solid red",
+			boxShadow: "0 0 2px red"
+		});
+		$('#userCue').html("<font color='red'><b>×手机号不能为空</b></font>");
+		return false;
+	}else {
+		$('#phone').css({
+			border: "1px solid #D7D7D7",
+			boxShadow: "none"
+		});
+
+	}
+
+	var checkPhoen = /^1[3|4|5|7|8][0-9]{9}$/;
+	if (!checkPhoen.test(phone)) {
+		$('#phone').focus().css({
+			border: "1px solid red",
+			boxShadow: "0 0 2px red"
+		});
+		$('#userCue').html("<font color='red'><b>×手机号码不正确</b></font>");
+		return false;
+
+	}else {
+		$('#phone').css({
+			border: "1px solid #D7D7D7",
+			boxShadow: "none"
+		});
+
+	}
+
+	$.ajax({
+		url:'/user/checkCondition',
+		type:"POST",
+		dataType: 'json',
+		data:{"phone":phone},
+		success:function(data){
+
+			if(data != null){
+				$('#phone').focus().css({
+					border: "1px solid red",
+					boxShadow: "0 0 2px red"
+				});
+				$('#userCue').html("<font color='red'><b>×该手机号码已存在</b></font>");
+				return false;
+			}
+
+		},
+		error:function(){
+			$('#phone').css({
+				border: "1px solid #D7D7D7",
+				boxShadow: "none"
+			});
+			$('#userCue').html("<font color='green'><b>该手机号码可以使用</b></font>");
+
+		}
+
+
+	});
+
+}
+
+//邮箱验证
+function checkEmail () {
+
+	var email = $("#email").val();
+	if(email == ""){
+		$('#email').focus().css({
+			border: "1px solid red",
+			boxShadow: "0 0 2px red"
+		});
+		$('#userCue').html("<font color='red'><b>×邮箱不能为空</b></font>");
+		return false;
+	} else {
+		$('#email').css({
+			border: "1px solid #D7D7D7",
+			boxShadow: "none"
+		});
+	}
+
+	var checkEmail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+	if (!checkEmail.test(email)) {
+		$('#email').focus().css({
+			border: "1px solid red",
+			boxShadow: "0 0 2px red"
+		});
+		$('#userCue').html("<font color='red'><b>×邮箱格式不正确</b></font>");
+		return false;
+	} else {
+		$('#email').css({
+			border: "1px solid #D7D7D7",
+			boxShadow: "none"
+		});
+
+	}
+
+
+	$.ajax({
+		url:'/user/checkCondition',
+		type:"POST",
+		dataType: 'json',
+		data:{"email":email},
+		success:function(data){
+
+			if(data != null){
+				$('#email').focus().css({
+					border: "1px solid red",
+					boxShadow: "0 0 2px red"
+				});
+				$('#userCue').html("<font color='red'><b>×该邮箱已被使用</b></font>");
+				return false;
+			}
+
+		},
+		error:function(){
+			$('#email').css({
+				border: "1px solid #D7D7D7",
+				boxShadow: "none"
+			});
+			$('#userCue').html("<font color='green'><b>该邮箱可以使用</b></font>");
+
+		}
+
+
+	});
+
+}
+
+//验证邀请码
+function checkYqm () {
+
+	var yaoqingma = $('#yaoqingma').val();
+	if (yaoqingma == "") {
+		$('#yaoqingma').focus().css({
+			border: "1px solid red",
+			boxShadow: "0 0 2px red"
+		});
+		$('#userCue').html("<font color='red'><b>×请填写邀请码</b></font>");return false;
+	} else {
+		$('#yaoqingma').css({
+			border: "1px solid #D7D7D7",
+			boxShadow: "none"
+		});
+
+	}
+
+	$.ajax({
+		url:'/user/checkYqm',
+		type:"POST",
+		dataType: 'json',
+		data:{"yaoqingma":yaoqingma},
+		success:function(data){
+
+			if(data != null){
+				$('#yaoqingma').focus().css({
+					border: "1px solid red",
+					boxShadow: "0 0 2px red"
+				});
+				$('#userCue').html("<font color='red'><b>×请输入正确的验证码</b></font>");
+				return false;
+			}
+
+		},
+		error:function(){
+			$('#yaoqingma').css({
+				border: "1px solid #D7D7D7",
+				boxShadow: "none"
+			});
+			$('#userCue').html("<font color='green'><b>该验证码可以使用</b></font>");
+
+		}
+
+
+	});
+
+}
+
+$(function(){
+
+	project.controller.login();
+	project.controller.register();
+
+});
+
+var project = {
+
+	controller : {
+
+		register : function () {
+
+			$('#reg').click(function() {
+
+				var phone = $('#phone').val();
+				if (phone == "") {
+					$('#phone').focus().css({
+						border: "1px solid red",
+						boxShadow: "0 0 2px red"
+					});
+					$('#userCue').html("<font color='red'><b>×手机号不能为空</b></font>");
+					return false;
+				}else {
+					$('#phone').css({
+						border: "1px solid #D7D7D7",
+						boxShadow: "none"
+					});
+
+				}
+
+
+				var checkPhoen = /^1[3|4|5|7|8][0-9]{9}$/;
+				if (!checkPhoen.test(phone)) {
+					$('#phone').focus().css({
+						border: "1px solid red",
+						boxShadow: "0 0 2px red"
+					});
+					$('#userCue').html("<font color='red'><b>×手机号码格式不正确</b></font>");
+					return false;
+
+				}else {
+					$('#phone').css({
+						border: "1px solid #D7D7D7",
+						boxShadow: "none"
+					});
+
+				}
+
+				//邮箱验证
+				var email = $('#email').val();
+
+				if(email == ""){
+					$('#email').focus().css({
+						border: "1px solid red",
+						boxShadow: "0 0 2px red"
+					});
+					$('#userCue').html("<font color='red'><b>×邮箱不能为空</b></font>");
+					return false;
+				} else {
+					$('#email').css({
+						border: "1px solid #D7D7D7",
+						boxShadow: "none"
+					});
+				}
+
+				var checkEmail = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+((.[a-zA-Z0-9_-]{2,3}){1,2})$/;
+				if (!checkEmail.test(email)) {
+					$('#email').focus().css({
+						border: "1px solid red",
+						boxShadow: "0 0 2px red"
+					});
+					$('#userCue').html("<font color='red'><b>×邮箱格式不正确</b></font>");
+					return false;
+				} else {
+					$('#email').css({
+						border: "1px solid #D7D7D7",
+						boxShadow: "none"
+					});
+
+				}
+
+				//密码验证
+				var pwdmin = 6;
+				if ($('#password').val().length < pwdmin) {
+					$('#password').focus();
+					$('#userCue').html("<font color='red'><b>×密码不能小于" + pwdmin + "位</b></font>");
+					return false;
+				}
+				if ($('#password2').val() != $('#password').val()) {
+					$('#password2').focus();
+					$('#userCue').html("<font color='red'><b>×两次密码不一致！</b></font>");
+					return false;
+				}
+
+				//邀请码验证
+				//var sqq = /^[1-9]{1}[0-9]{4,9}$/;
+				var yaoqingma = $('#yaoqingma').val();
+				if (yaoqingma == "") {
+					$('#yaoqingma').focus().css({
+						border: "1px solid red",
+						boxShadow: "0 0 2px red"
+					});
+					$('#userCue').html("<font color='red'><b>×请填写邀请码</b></font>");return false;
+				} else {
+					$('#yaoqingma').css({
+						border: "1px solid #D7D7D7",
+						boxShadow: "none"
+					});
+
+				}
+
+				//验证码
+				var inputCode = $("#inputCode").val();
+				if(inputCode == ""){
+					$('#inputCode').focus().css({
+						border: "1px solid red",
+						boxShadow: "0 0 2px red"
+					});
+					$('#userCue').html("<font color='red'><b>×请填写验证码</b></font>");return false;
+				}else{
+					$('#inputCode').css({
+						border: "1px solid #D7D7D7",
+						boxShadow: "none"
+					});
+				}
+
+				$('#regUser').submit();
+			});
+
+		},
+
+		login : function () {
+
+			$("#login").click(function(){
+
+				var phone = $("#phone").val();
+				if(phone == ""){
+					$('#phone').focus().css({
+						border: "1px solid red",
+						boxShadow: "0 0 2px red"
+					});
+					$('#userCue').html("<font class='error' color='red'><b>×手机号不能为空</b></font>");return false;
+				}else{
+					$('#phone').css({
+						border: "1px solid #D7D7D7",
+						boxShadow: "none"
+					});
+				}
+
+				var checkPhoen = /^1[3|4|5|7|8][0-9]{9}$/;
+				if (!checkPhoen.test(phone)) {
+					$('#phone').focus().css({
+						border: "1px solid red",
+						boxShadow: "0 0 2px red"
+					});
+					$('#userCue').html("<font class='error' color='red'><b>×手机号码格式不正确</b></font>");
+					return false;
+
+				}else {
+					$('#phone').css({
+						border: "1px solid #D7D7D7",
+						boxShadow: "none"
+					});
+
+				}
+
+				//验证密码
+				var pwdmin = 6;
+				if ($('#password').val().length < pwdmin) {
+					$('#password').focus();
+					$('#userCue').html("<font color='red'><b>×请输入密码</b></font>");
+					return false;
+				}
+
+				$('#loginUser').submit();
+
+			});
+
+		}
+
+	}
+
+}
+

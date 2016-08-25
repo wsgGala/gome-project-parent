@@ -7,7 +7,7 @@
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="nicheng" jdbcType="VARCHAR" property="nicheng" />
     <result column="sex" jdbcType="TINYINT" property="sex" />
-    <result column="money" jdbcType="BIGINT" property="money" />
+    <result column="money" jdbcType="DECIMAL" property="money" />
     <result column="updtime" jdbcType="VARCHAR" property="updtime" />
     <result column="createtime" jdbcType="VARCHAR" property="createtime" />
     <result column="syzt" jdbcType="VARCHAR" property="syzt" />
@@ -38,7 +38,7 @@
       and sex = #{sex,jdbcType=TINYINT}
     </if>
     <if test="money != null">
-      and money = #{money,jdbcType=BIGINT}
+      and money = #{money,jdbcType=DECIMAL}
     </if>
     <if test="updtime != null and updtime != ''">
       and updtime = #{updtime,jdbcType=VARCHAR}
@@ -85,7 +85,7 @@
   <delete id="deleteByPrimaryKey" parameterType="User" >
     UPDATE user
     set syzt = 'N'
-    where username = #{username,jdbcType=VARCHAR}
+    where phone = #{phone,jdbcType=VARCHAR}
   </delete>
 
   <insert id="insertSelective" parameterType="User" >
@@ -107,9 +107,6 @@
   <update id="updateByUserName" parameterType="User" >
     update user
     <set >
-      <if test="phone != null" >
-        phone = #{phone,jdbcType=VARCHAR},
-      </if>
       <if test="password != null" >
         password = #{password,jdbcType=VARCHAR},
       </if>
@@ -120,13 +117,22 @@
         sex = #{sex,jdbcType=TINYINT},
       </if>
       <if test="money != null" >
-        money = #{money,jdbcType=BIGINT},
+        money = #{money,jdbcType=DECIMAL},
       </if>
-      <if test="updtime != null and updtime != ''" >
-        updtime = #{updtime,jdbcType=VARCHAR},
+      <if test="updtime != null" >
+        updtime = #{updtime,jdbcType=TIMESTAMP},
       </if>
       <if test="email != null">
         email = #{email,jdbcType=VARCHAR}
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR}
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR}
+      </if>
+      <if test="qq != null">
+        qq = #{qq,jdbcType=VARCHAR}
       </if>
     </set>
     where phone = #{phone,jdbcType=VARCHAR}

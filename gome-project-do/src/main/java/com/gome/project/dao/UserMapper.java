@@ -6,8 +6,18 @@ import org.apache.ibatis.annotations.Param;
 
 public interface UserMapper {
 
+    /**
+     * 更新用户信息：手机号为可用
+     * @param user
+     * @return
+     */
     int deleteByPrimaryKey(User user);
 
+    /**
+     * 插入一条新数据
+     * @param user
+     * @return
+     */
     int insertSelective(User user);
 
     /**
@@ -23,5 +33,10 @@ public interface UserMapper {
      */
     User selectUserWithConditions(User user);
 
+    /**
+     * 根据用户手机号更新用户的信息
+     * @param user
+     * @return
+     */
     int updateByUserName(User user);
 }

@@ -1,5 +1,6 @@
 package com.gome.project.entity;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 public class User {
@@ -13,7 +14,7 @@ public class User {
 
     private Byte sex;
 
-    private Long money;
+    private BigDecimal money;
 
     private String updtime;
 
@@ -80,11 +81,11 @@ public class User {
         this.sex = sex;
     }
 
-    public Long getMoney() {
+    public BigDecimal getMoney() {
         return money;
     }
 
-    public void setMoney(Long money) {
+    public void setMoney(BigDecimal money) {
         this.money = money;
     }
 
