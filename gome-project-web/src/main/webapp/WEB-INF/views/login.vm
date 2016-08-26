@@ -18,11 +18,16 @@
             <div class="bj_bai">
                 <h3>登录</h3>
                 <form action="/user/login" id="loginUser" method="POST">
-                    <span id="userCue" style="float:left" class="cue">登录</span>
-                    <input name="phone" type="text" id="phone" class="kuang_txt" placeholder="手机号" value="$!phone">
+                    <span id="userCue" style="float:left" class="cue">
+                        #if($!message == "false")
+                            <font color='red'><b>×密码不正确，请重新登陆!</b></font>
+                    #else
+                        登录
+                    #end</span>
+                    <input name="phone" type="text" id="phone" class="kuang_txt" onchange="checkLoginPhone()" placeholder="手机号" value="$!phone">
                     <input name="password" id="password" type="password" class="kuang_txt" placeholder="密码">
                     <div>
-                        <a href="/user/tochange">忘记密码？</a><input name="" type="checkbox" value="" checked><span>记住我</span>
+                        <a href="/user/toChangePassword">忘记密码？</a><input name="" type="checkbox" value="" checked><span>记住我</span>
                     </div>
                     <input name="登录" id="login" type="button" class="btn_zhuce" value="登录">
 

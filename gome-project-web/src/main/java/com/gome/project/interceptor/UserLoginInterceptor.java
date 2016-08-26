@@ -1,6 +1,7 @@
 package com.gome.project.interceptor;
 
 import com.gome.project.common.util.StringUtils;
+import com.gome.project.entity.User;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -29,11 +30,11 @@ public class UserLoginInterceptor extends HandlerInterceptorAdapter {
         //从cookie中获取当前登录用户的信息
         try {
             //String cookieToken = cookieUtil.getCookieValues(request, "token");
-           /* String userName = (String) request.getSession().getAttribute("userName");
+            /*User user = (User) request.getSession().getAttribute("user");
 
-            if(StringUtils.isBlank(userName)){
+            if(user == null){
 
-                response.sendRedirect(request.getContextPath()+"/toLogin");
+                response.sendRedirect(request.getContextPath()+"/user/toLogin");
                 return false;
             }*/
 

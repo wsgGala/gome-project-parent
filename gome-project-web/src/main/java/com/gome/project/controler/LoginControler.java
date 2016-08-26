@@ -110,7 +110,6 @@ public class LoginControler {
             user.setPassword(password);
             user.setPhone(phone);
             User loginUser = userService.login(user);
-            System.out.println(loginUser);
             if(loginUser != null){
                 //用户登录成功
                 model.setViewName("/success");
@@ -119,7 +118,7 @@ public class LoginControler {
                 //用户登录失败，重新登陆
                 model.setViewName("/login");
                 model.addObject("phone",phone);
-                model.addObject("message","密码不正确，请重新输入!");
+                model.addObject("message","false");
             }
 
         }catch (Exception e){
@@ -162,6 +161,25 @@ public class LoginControler {
         yqmInfo.setYaoqingma(yaoqingma);
         YqmInfo checkYqm = yqmInfoService.selectYqmInfoByCondition(yqmInfo);
         return checkYqm;
+    }
+
+    //用户修改密码
+    @RequestMapping(value="/toChangePassword",method = {RequestMethod.POST,RequestMethod.GET})
+    public ModelAndView tochange(HttpServletRequest request, HttpServletResponse response, ModelAndView model,
+                                 @RequestParam(value="phone",required = true) String phone){
+
+        User user = new User();
+        user.setPhone(phone);
+
+        return model;
+    }
+
+    //用户退出
+    @RequestMapping(value="/logout")
+    public ModelAndView logout(HttpServletRequest request, HttpServletResponse response, ModelAndView model){
+        model.clear();
+        model.setViewName("/login");
+        return model;
     }
 
 }

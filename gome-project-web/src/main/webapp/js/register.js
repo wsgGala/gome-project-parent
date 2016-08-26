@@ -1,3 +1,4 @@
+//注册时验证手机号
 function checkPhone (){
 
 	var phone = $('#phone').val();
@@ -130,6 +131,30 @@ function checkEmail () {
 
 }
 
+//密码和确认密码验证
+function checkPassword () {
+
+	if ($('#password2').val() != $('#password').val()) {
+		$('#password2').focus().css({
+			border: "1px solid red",
+			boxShadow: "0 0 2px red"
+		});
+		$('#userCue').html("<font color='red'><b>×两次密码不一致！</b></font>");
+		return false;
+	}else{
+		$('#password').css({
+			border: "1px solid #D7D7D7",
+			boxShadow: "none"
+		});
+		$('#password2').css({
+			border: "1px solid #D7D7D7",
+			boxShadow: "none"
+		});
+		$('#userCue').html("<font color='green'><b>×密码一致！</b></font>");
+	}
+
+}
+
 //验证邀请码
 function checkYqm () {
 
@@ -157,20 +182,99 @@ function checkYqm () {
 
 			if(data != null){
 				$('#yaoqingma').focus().css({
-					border: "1px solid red",
-					boxShadow: "0 0 2px red"
+					border: "1px solid #D7D7D7",
+					boxShadow: "none"
 				});
-				$('#userCue').html("<font color='red'><b>×请输入正确的验证码</b></font>");
+				$('#userCue').html("<font color='green'><b>该邀请码可以使用</b></font>");
 				return false;
 			}
 
 		},
 		error:function(){
-			$('#yaoqingma').css({
-				border: "1px solid #D7D7D7",
-				boxShadow: "none"
+			$('#yaoqingma').focus().css({
+				border: "1px solid red",
+				boxShadow: "0 0 2px red"
 			});
-			$('#userCue').html("<font color='green'><b>该验证码可以使用</b></font>");
+			$('#userCue').html("<font color='red'><b>×请输入正确的邀请码</b></font>");
+
+		}
+
+
+	});
+
+}
+
+//用户同意协议提交按钮可用
+/*function checkAgree () {
+
+	if ($("#agree").is(":checked")){
+		$("#reg").removeAttr('disabled');
+	}else{
+		$("#reg").attr('disabled',"disabled");
+	}
+
+}*/
+
+//登录时手机号验证
+function checkLoginPhone (){
+
+	var phone = $('#phone').val();
+	if (phone == "") {
+		$('#phone').focus().css({
+			border: "1px solid red",
+			boxShadow: "0 0 2px red"
+		});
+		$('#userCue').html("<font color='red'><b>×手机号不能为空</b></font>");
+		return false;
+	}else {
+		$('#phone').css({
+			border: "1px solid #D7D7D7",
+			boxShadow: "none"
+		});
+
+	}
+
+	var checkPhoen = /^1[3|4|5|7|8][0-9]{9}$/;
+	if (!checkPhoen.test(phone)) {
+		$('#phone').focus().css({
+			border: "1px solid red",
+			boxShadow: "0 0 2px red"
+		});
+		$('#userCue').html("<font color='red'><b>×手机号码不正确</b></font>");
+		return false;
+
+	}else {
+		$('#phone').css({
+			border: "1px solid #D7D7D7",
+			boxShadow: "none"
+		});
+
+	}
+
+	$.ajax({
+		url:'/user/checkCondition',
+		type:"POST",
+		dataType: 'json',
+		data:{"phone":phone},
+		success:function(data){
+
+			if(data != null){
+				$('#phone').css({
+					border: "1px solid #D7D7D7",
+					boxShadow: "none"
+				});
+				$('#userCue').html("<font color='green'><b>该手机号码可以登录</b></font>");
+
+			}
+
+		},
+		error:function(){
+			$('#phone').focus().css({
+				border: "1px solid red",
+				boxShadow: "0 0 2px red"
+			});
+			$('#userCue').html("<font color='red'><b>×该用户名不存在</b></font>");
+			return false;
 
 		}
 
@@ -298,12 +402,19 @@ var project = {
 						border: "1px solid red",
 						boxShadow: "0 0 2px red"
 					});
-					$('#userCue').html("<font color='red'><b>×请填写验证码</b></font>");return false;
+					$('#userCue').html("<font color='red'><b>×请填写验证码</b></font>");
+					return false;
 				}else{
 					$('#inputCode').css({
 						border: "1px solid #D7D7D7",
 						boxShadow: "none"
 					});
+				}
+
+				//协议
+				if (!$("#agree").is(":checked")){
+					$('#userCue').html("<font color='red'><b>×请同意协议后再注册</b></font>");
+					return false;
 				}
 
 				$('#regUser').submit();
@@ -348,11 +459,13 @@ var project = {
 
 				//验证密码
 				var pwdmin = 6;
-				if ($('#password').val().length < pwdmin) {
+				if ($('#password').val() == '') {
 					$('#password').focus();
 					$('#userCue').html("<font color='red'><b>×请输入密码</b></font>");
 					return false;
 				}
+
+
 
 				$('#loginUser').submit();
 
