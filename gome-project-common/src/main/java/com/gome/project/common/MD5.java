@@ -73,9 +73,8 @@ public class MD5 {
     }
 
     public static void main(String[] args) {
-        Date date = new Date();
-        DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        System.out.println(sdf.format(date));
+        String password = MD5.md5Password("PCx60Yve4yvKEVRy","123456");
+        System.out.println(password);
     }
 
 }

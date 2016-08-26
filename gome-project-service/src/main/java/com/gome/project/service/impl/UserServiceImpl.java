@@ -71,9 +71,10 @@ public class UserServiceImpl implements UserService {
         User selUser = userMapper.selectUserWithConditions(selectUser);
         if(selUser != null){
             String password = user.getPassword();
-            String salt = selectUser.getSalt();
+            String salt = selUser.getSalt();
             //对登录密码进行加密
             password = MD5.md5Password(salt,password);
+            System.out.println(password);
             user.setPassword(password);
             user = userMapper.selectUserWithConditions(user);
             return user;
