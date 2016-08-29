@@ -65,6 +65,8 @@ a[href^="http://tongji.baidu.com"]{display: none;}
 .zhuce_body .zhuce_kong .zc .bj_bai .possword{background:url(/image/zc_16.jpg) no-repeat 10px 10px;}
 .zhuce_body .zhuce_kong .zc .bj_bai .yanzm{background:url(/image/zc_19.jpg) no-repeat 10px 10px; margin-bottom:0px;}
 
+.zhuce_body .zhuce_kong .zc .bj_bai .yzkuang_txt{ width:126px; height:32px; border:1px solid #dddddd; line-height:32px; padding-left:32px; color:#b1a9a9;  margin-bottom:10px; }
+
 .zhuce_body .zhuce_kong .zc .bj_bai .hui_kuang{ float:left; width:97px; height:31px; border:1px solid #dddddd;}
 .zhuce_body .zhuce_kong .zc .bj_bai .shuaxin{ float:left; margin:0px 0 0 150px; width:14px; height:14px;}
 .zhuce_body .zhuce_kong .zc .bj_bai div{ float:left; width:100%; line-height:43px;}

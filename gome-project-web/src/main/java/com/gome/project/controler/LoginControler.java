@@ -71,9 +71,13 @@ public class LoginControler {
                 model.setViewName("/login");
                 model.addObject("phone",phone);
                 return model;
+            }else{
+                //注册失败
+                model.setViewName("/register");
             }
         }catch(Exception e){
             logger.error("系统出现异常",e);
+            model.setViewName("/");
         }
         return model;
     }

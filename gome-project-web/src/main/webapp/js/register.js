@@ -204,6 +204,60 @@ function checkYqm () {
 
 }
 
+//验证码验证
+function checkCode () {
+
+	var code = $("#inputCode").val();
+
+	if(code == ""){
+		$('#inputCode').focus().css({
+			border: "1px solid red",
+			boxShadow: "0 0 2px red"
+		});
+		$('#userCue').html("<font color='red'><b>验证码正确</b></font>");
+		return false;
+	}
+
+	$.ajax({
+		url:'/code/checkCode',
+		type:"POST",
+		dataType: 'json',
+		data:{"code":code},
+		success:function(data){
+
+			if(data != null){
+				$('#inputCode').focus().css({
+					border: "1px solid #D7D7D7",
+					boxShadow: "none"
+				});
+				$('#userCue').html("<font color='green'><b>验证码正确</b></font>");
+				return false;
+			}
+
+		},
+		error:function(){
+			$('#inputCode').focus().css({
+				border: "1px solid red",
+				boxShadow: "0 0 2px red"
+			});
+			$('#userCue').html("<font color='red'><b>×请输入正确的验证码</b></font>");
+
+		}
+
+
+	});
+
+}
+
+//验证码的刷新
+function changeCode () {
+
+	var time = new Date();
+	var img = document.getElementById("exchange");
+	img.src = "http://localhost:8080/code/getCode?time="+time;
+
+}
+
 //用户同意协议提交按钮可用
 /*function checkAgree () {
 

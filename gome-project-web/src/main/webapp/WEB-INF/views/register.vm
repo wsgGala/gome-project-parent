@@ -26,12 +26,13 @@
                     <input name="password" id="password" type="password" class="kuang_txt possword" placeholder="密码">
                     <input name="" id="password2" type="password" class="kuang_txt possword"onchange="checkPassword()" placeholder="确认密码">
                     <input name="yaoqingma" id="yaoqingma" type="text" class="kuang_txt possword" onchange="checkYqm()" placeholder="邀请码">
-                    <input name="code" id="inputCode" type="text" maxlength="6" class="kuang_txt yanzm" placeholder="验证码">
-                    <div>
+                    <input name="code" id="inputCode" type="text" maxlength="6" class="yzkuang_txt yanzm" onchange="checkCode()" placeholder="验证码">
+                    <a href="#"><img id="exchange" src="/code/getCode" width="110" onclick="changeCode()" height="32" /></a>
+                    #*<div>
                         <span id="code" class="mycode"></span>
 
-                    #*<div class="shuaxin"><a href="#"><img src="/image/zc_25.jpg" width="13" height="14"></a></div>*#
-                    </div>
+                        <a href="#"><img src="/code/getCode" width="110" height="32" /></a>
+                    </div>*#
                     <div>
                         <input id="agree" onchange="checkAgree()" type="checkbox" checked=""><span>已阅读并同意<a href="#" target="_blank"><span class="lan">《XXXXX使用协议》</span></a></span>
                     </div>
