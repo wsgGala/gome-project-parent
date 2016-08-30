@@ -20,7 +20,7 @@
                 <form action="/user/login" id="loginUser" method="POST">
                     <span id="userCue" style="float:left" class="cue">
                         #if($!message == "false")
-                            <font color='red'><b>×密码不正确，请重新登陆!</b></font>
+                            <font color='red' class="font"><b>×密码不正确，请重新登陆!</b></font>
                     #else
                         登录
                     #end</span>

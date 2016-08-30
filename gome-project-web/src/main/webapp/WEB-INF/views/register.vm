@@ -7,8 +7,12 @@
     <meta name="content" content="乔老师">
     <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
     <link type="text/css" rel="stylesheet" href="/css/login.css">
-    <script type="text/javascript" src="/js/JQuery/jQuery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="/js/JQuery/jQuery-2.1.3.min.js">
+        contextPath=pageContext.request.getContextPath;
+    </script>
     <script type="text/javascript" src="/js/register.js"></script>
+    <script type="text/javascript" src="/js/plugin/layer/layer.js">
+    </script>
    #* <script type="text/javascript" src="/js/KinerCode.js"></script>*#
 </head>
 <body class="login_bj" >
@@ -20,21 +24,27 @@
             <div class="bj_bai">
                 <h3>欢迎注册</h3>
                 <form action="/user/register" id="regUser" method="POST" datatype="user" >
-                    <span id="userCue" style="float:left" class="cue">注册请注意格式!</span>
-                    <input name="phone" id="phone" type="text" class="kuang_txt phone" onchange="checkPhone()" placeholder="手机号">
-                    <input name="email" id="email" type="text" class="kuang_txt email" onchange="checkEmail()" placeholder="邮箱">
+                    #*<span id="userCue" style="float:left" class="cue">注册请注意格式!</span>*#
+                    <span id="userCue" style="float:left" class="cue">
+                        #if($!message == "false")
+                            <font color='red' class="font"><b>×注册失败，请重新注册!</b></font>
+                        #else
+                            注册请注意格式!
+                        #end</span>
+                    <input name="phone" id="phone" type="text" class="kuang_txt phone" onchange="checkPhone()" placeholder="手机号" value="$!phone">
+                    <input name="email" id="email" type="text" class="kuang_txt email" onchange="checkEmail()" placeholder="邮箱" value="$!email">
                     <input name="password" id="password" type="password" class="kuang_txt possword" placeholder="密码">
-                    <input name="" id="password2" type="password" class="kuang_txt possword"onchange="checkPassword()" placeholder="确认密码">
+                    <input name="" id="password2" type="password" class="kuang_txt possword" onchange="checkPassword()" placeholder="确认密码">
                     <input name="yaoqingma" id="yaoqingma" type="text" class="kuang_txt possword" onchange="checkYqm()" placeholder="邀请码">
                     <input name="code" id="inputCode" type="text" maxlength="6" class="yzkuang_txt yanzm" onchange="checkCode()" placeholder="验证码">
-                    <a href="#"><img id="exchange" src="/code/getCode" width="110" onclick="changeCode()" height="32" /></a>
+                    <a href="#"><img id="exchange" class="yanzhengtp" src="/code/getCode" width="110" onclick="changeCode()" height="32" /></a>
                     #*<div>
                         <span id="code" class="mycode"></span>
 
                         <a href="#"><img src="/code/getCode" width="110" height="32" /></a>
                     </div>*#
                     <div>
-                        <input id="agree" onchange="checkAgree()" type="checkbox" checked=""><span>已阅读并同意<a href="#" target="_blank"><span class="lan">《XXXXX使用协议》</span></a></span>
+                        <input id="agree" type="checkbox" checked=""><span>已阅读并同意<a href="#" target="_blank"><span class="lan">《XXXXX使用协议》</span></a></span>
                     </div>
                     <input name="注册" id="reg" type="button"   class="btn_zhuce" value="注册">
 

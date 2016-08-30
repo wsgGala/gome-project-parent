@@ -23,7 +23,7 @@ function checkPhone (){
 			border: "1px solid red",
 			boxShadow: "0 0 2px red"
 		});
-		$('#userCue').html("<font color='red'><b>×手机号码不正确</b></font>");
+		$('#userCue').html("<font color='red'><b>×手机号码格式不正确</b></font>");
 		return false;
 
 	}else {
@@ -150,7 +150,7 @@ function checkPassword () {
 			border: "1px solid #D7D7D7",
 			boxShadow: "none"
 		});
-		$('#userCue').html("<font color='green'><b>×密码一致！</b></font>");
+		$('#userCue').html("<font color='green'><b>密码一致！</b></font>");
 	}
 
 }
@@ -164,7 +164,8 @@ function checkYqm () {
 			border: "1px solid red",
 			boxShadow: "0 0 2px red"
 		});
-		$('#userCue').html("<font color='red'><b>×请填写邀请码</b></font>");return false;
+		$('#userCue').html("<font color='red'><b>×请填写邀请码</b></font>");
+		return false;
 	} else {
 		$('#yaoqingma').css({
 			border: "1px solid #D7D7D7",
@@ -181,7 +182,7 @@ function checkYqm () {
 		success:function(data){
 
 			if(data != null){
-				$('#yaoqingma').focus().css({
+				$('#yaoqingma').css({
 					border: "1px solid #D7D7D7",
 					boxShadow: "none"
 				});
@@ -214,7 +215,7 @@ function checkCode () {
 			border: "1px solid red",
 			boxShadow: "0 0 2px red"
 		});
-		$('#userCue').html("<font color='red'><b>验证码正确</b></font>");
+		$('#userCue').html("<font color='red'><b>×请输入验证码</b></font>");
 		return false;
 	}
 
@@ -254,7 +255,8 @@ function changeCode () {
 
 	var time = new Date();
 	var img = document.getElementById("exchange");
-	img.src = "http://localhost:8080/code/getCode?time="+time;
+	alert(contextPath);
+	img.src = "http://10.144.35.244:8080/code/getCode?time="+time;
 
 }
 
@@ -427,7 +429,8 @@ var project = {
 					return false;
 				}
 				if ($('#password2').val() != $('#password').val()) {
-					$('#password2').focus();
+					/*$('#password2').focus();*/
+					$('#password').focus();
 					$('#userCue').html("<font color='red'><b>×两次密码不一致！</b></font>");
 					return false;
 				}
@@ -471,7 +474,19 @@ var project = {
 					return false;
 				}
 
+				/*if(checkPhone()){
+					if( checkEmail()){
+						if(checkPassword()){
+							if(checkYqm()){
+								if(checkCode()){
+									$('#regUser').submit();
+								}
+							}
+						}
+					}
+				}*/
 				$('#regUser').submit();
+
 			});
 
 		},
@@ -519,9 +534,9 @@ var project = {
 					return false;
 				}
 
-
-
-				$('#loginUser').submit();
+				if(checkLoginPhone()){
+					$('#loginUser').submit();
+				}
 
 			});
 

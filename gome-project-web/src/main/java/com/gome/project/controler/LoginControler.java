@@ -74,6 +74,10 @@ public class LoginControler {
             }else{
                 //注册失败
                 model.setViewName("/register");
+                model.addObject("message","false");
+                model.addObject("phone",user.getPhone());
+                model.addObject("email",user.getEmail());
+
             }
         }catch(Exception e){
             logger.error("系统出现异常",e);

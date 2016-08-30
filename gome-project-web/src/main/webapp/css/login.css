@@ -2,7 +2,7 @@
 /* CSS reset */
 *{ font-family:"microsoft yahei",simsun,Tahoma,sans-serif;}
 body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { margin:0; padding:0; }
-fieldset,img {border:0; }
+fieldset,img {border:0;margin-bottom: -10px;margin-left: -4px; }
 ol,ul {list-style:none; }
 h1,h2,h3,h4,h5,h6,button,input,select,textarea {font-size:100%;}
 button::-moz-focus-inner,input::-moz-focus-inner{padding:0; border:0;}
@@ -58,7 +58,19 @@ a[href^="http://tongji.baidu.com"]{display: none;}
     padding: 10px;
     margin-top: -10px;
     margin-bottom: 10px;
-    margin-left: 80px;
+    margin-left: 72px;
+}
+.zhuce_body .zhuce_kong .zc .bj_bai .cue .font{
+    padding: 10px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    margin-left: -34px;
+}
+.zhuce_body .login_kuang .zc .bj_bai .cue .font{
+    padding: 10px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    margin-left: -71px;
 }
 .zhuce_body .zhuce_kong .zc .bj_bai .phone{background:url(/image/zc_06.jpg) no-repeat 10px 10px;}
 .zhuce_body .zhuce_kong .zc .bj_bai .email{background:url(/image/zc_12.jpg) no-repeat 10px 10px;}
