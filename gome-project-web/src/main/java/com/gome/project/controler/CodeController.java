@@ -100,6 +100,7 @@ public class CodeController {
 
     }
 
+    @ResponseBody
     @RequestMapping(value="/checkCode",method = {RequestMethod.GET,RequestMethod.POST})
     public String checkCode(HttpServletRequest request, @RequestParam(value="code",required = true) String code){
         code = code.toLowerCase();
@@ -112,8 +113,8 @@ public class CodeController {
             return "success";
         }else{
             logger.info("验失败 。。。。。。。。");
-            int i = 3/0;
-            return null;
+            //int i = 3/0;
+            return "";
         }
 
     }

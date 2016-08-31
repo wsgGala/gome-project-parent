@@ -81,7 +81,6 @@ public class LoginControler {
             }
         }catch(Exception e){
             logger.error("系统出现异常",e);
-            model.setViewName("/");
         }
         return model;
     }
@@ -120,8 +119,9 @@ public class LoginControler {
             User loginUser = userService.login(user);
             if(loginUser != null){
                 //用户登录成功
-                model.setViewName("/success");
-                model.addObject("user",loginUser);
+                model.setViewName("redirect:/user/index");
+                //model.addObject("user",loginUser);
+                request.getSession().setAttribute("user",loginUser);
             }else{
                 //用户登录失败，重新登陆
                 model.setViewName("/login");
@@ -185,8 +185,8 @@ public class LoginControler {
     //用户退出
     @RequestMapping(value="/logout")
     public ModelAndView logout(HttpServletRequest request, HttpServletResponse response, ModelAndView model){
-        model.clear();
-        model.setViewName("/login");
+        request.getSession().invalidate();
+        model.setViewName("redirect:/user/index");
         return model;
     }
 

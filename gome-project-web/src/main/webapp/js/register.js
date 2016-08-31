@@ -187,7 +187,7 @@ function checkYqm () {
 					boxShadow: "none"
 				});
 				$('#userCue').html("<font color='green'><b>该邀请码可以使用</b></font>");
-				return false;
+
 			}
 
 		},
@@ -197,7 +197,7 @@ function checkYqm () {
 				boxShadow: "0 0 2px red"
 			});
 			$('#userCue').html("<font color='red'><b>×请输入正确的邀请码</b></font>");
-
+			return false;
 		}
 
 
@@ -222,17 +222,17 @@ function checkCode () {
 	$.ajax({
 		url:'/code/checkCode',
 		type:"POST",
-		dataType: 'json',
+		//dataType: 'json',
 		data:{"code":code},
 		success:function(data){
 
 			if(data != null){
-				$('#inputCode').focus().css({
+				$('#inputCode').css({
 					border: "1px solid #D7D7D7",
 					boxShadow: "none"
 				});
 				$('#userCue').html("<font color='green'><b>验证码正确</b></font>");
-				return false;
+
 			}
 
 		},
@@ -242,7 +242,7 @@ function checkCode () {
 				boxShadow: "0 0 2px red"
 			});
 			$('#userCue').html("<font color='red'><b>×请输入正确的验证码</b></font>");
-
+			return false;
 		}
 
 
@@ -255,8 +255,8 @@ function changeCode () {
 
 	var time = new Date();
 	var img = document.getElementById("exchange");
-	alert(contextPath);
-	img.src = "http://10.144.35.244:8080/code/getCode?time="+time;
+	//alert(contextPath);
+	img.src = "/code/getCode?time="+time;
 
 }
 
@@ -320,7 +320,7 @@ function checkLoginPhone (){
 					boxShadow: "none"
 				});
 				$('#userCue').html("<font color='green'><b>该手机号码可以登录</b></font>");
-
+				return true;
 			}
 
 		},
@@ -534,9 +534,7 @@ var project = {
 					return false;
 				}
 
-				if(checkLoginPhone()){
-					$('#loginUser').submit();
-				}
+				$('#loginUser').submit();
 
 			});
 
